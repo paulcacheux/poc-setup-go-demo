@@ -4,13 +4,13 @@ on:
     branches:
       - main
 jobs:
-  strategy:
-    matrix:
-      os: [ubuntu-latest, windows-latest]
-      go-version: [1.14, 1.15, 1.16]
   setup:
     name: Setup - ${{ matrix.os }} - ${{ matrix.go-version }}
     runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        go-version: [1.14, 1.15, 1.16]
     steps:
     - name: Setup - ${{ matrix.go-version }}
       uses: actions/setup-go@v2
